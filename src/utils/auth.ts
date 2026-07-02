@@ -6,7 +6,7 @@ import { navigate } from "./navigate";
 export const checkAuhtUser = (
   redireccion1: string,
   redireccion2: string,
-  rol: Rol
+  rol: Rol,
 ) => {
   console.log("comienzo de checkeo");
 
@@ -17,10 +17,8 @@ export const checkAuhtUser = (
     navigate(redireccion1);
     return;
   } else {
-    console.log("existe pero no tiene el rol necesario");
-
     const parseUser: IUser = JSON.parse(user);
-    if (parseUser.role !== rol) {
+    if (parseUser.role.toLocaleLowerCase() !== rol) {
       navigate(redireccion2);
       return;
     }
