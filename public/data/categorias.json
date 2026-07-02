@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "eliminado": false,
+    "nombre": "Pizzas",
+    "descripcion": "Pizzas artesanales con masa fresca"
+  },
+  {
+    "id": 2,
+    "eliminado": false,
+    "nombre": "Hamburguesas",
+    "descripcion": "Hamburguesas gourmet con ingredientes frescos"
+  },
+  {
+    "id": 3,
+    "eliminado": false,
+    "nombre": "Bebidas",
+    "descripcion": "Gaseosas, jugos y bebidas frías"
+  },
+  {
+    "id": 4,
+    "eliminado": false,
+    "nombre": "Postres",
+    "descripcion": "Tortas, helados y dulces artesanales"
+  },
+  {
+    "id": 5,
+    "eliminado": false,
+    "nombre": "Empanadas",
+    "descripcion": "Empanadas horneadas y fritas de distintos sabores"
+  },
+  {
+    "id": 6,
+    "eliminado": false,
+    "nombre": "Ensaladas",
+    "descripcion": "Ensaladas frescas y saludables"
+  }
+]

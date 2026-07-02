@@ -3,7 +3,6 @@ import type { ICategory } from "./Category";
 export interface IProducto {
   id: number;
   eliminado: boolean;
-  createdAt: string;
   nombre: string;
   precio: number;
   descripcion: string;
@@ -11,5 +10,5 @@ export interface IProducto {
   imagen: string;
   cantidad?: number;
   disponible: boolean;
-  categorias: ICategory[];
+  categoria_id: number[];
 }

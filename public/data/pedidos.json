@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "fecha": "2024-02-10T12:30:00",
+    "estado": "PENDIENTE",
+    "total": 8500,
+    "formaPago": "EFECTIVO",
+    "idUsuario": 2,
+    "detalles": [
+      {
+        "idProducto": 1,
+        "cantidad": 2,
+        "subtotal": 5000
+      },
+      {
+        "idProducto": 3,
+        "cantidad": 1,
+        "subtotal": 3500
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "fecha": "2024-02-11T14:15:00",
+    "estado": "CONFIRMADO",
+    "total": 6200,
+    "formaPago": "TARJETA",
+    "idUsuario": 3,
+    "detalles": [
+      {
+        "idProducto": 2,
+        "cantidad": 2,
+        "subtotal": 4000
+      },
+      {
+        "idProducto": 4,
+        "cantidad": 1,
+        "subtotal": 2200
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "fecha": "2024-02-12T20:45:00",
+    "estado": "ENTREGADO",
+    "total": 9900,
+    "formaPago": "MERCADO_PAGO",
+    "idUsuario": 1,
+    "detalles": [
+      {
+        "idProducto": 1,
+        "cantidad": 1,
+        "subtotal": 2500
+      },
+      {
+        "idProducto": 5,
+        "cantidad": 3,
+        "subtotal": 4500
+      },
+      {
+        "idProducto": 6,
+        "cantidad": 2,
+        "subtotal": 2900
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "fecha": "2024-02-13T21:10:00",
+    "estado": "CANCELADO",
+    "total": 3000,
+    "formaPago": "EFECTIVO",
+    "idUsuario": 4,
+    "detalles": [
+      {
+        "idProducto": 3,
+        "cantidad": 1,
+        "subtotal": 3000
+      }
+    ]
+  }
+]

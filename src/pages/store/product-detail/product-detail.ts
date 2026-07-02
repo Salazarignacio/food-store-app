@@ -1,4 +1,4 @@
-import { products } from "../../../data/data";
+import productos from "../../../../public/data/productos.json";
 import { agregarAlCarrito } from "../../../utils/cart";
 import { getProduct } from "../../../utils/localStorage";
 import { getUser } from "../../../utils/localStorage";
@@ -24,7 +24,7 @@ const cantidadProductos = document.getElementById(
   "cantidad-productos",
 ) as HTMLDivElement;
 
-const producto = products.find((p) => p.id === id);
+const producto = productos.find((p) => p.id === id);
 
 if (producto && productoDiv) {
   const cantidadEnCarrito =
@@ -62,6 +62,6 @@ if (producto && productoDiv) {
         (document.getElementById(`cantidad-${id}`) as HTMLInputElement)?.value,
       ) || 1;
 
-    agregarAlCarrito(id, products, cantidad);
+    agregarAlCarrito(id, productos, cantidad);
   });
 }

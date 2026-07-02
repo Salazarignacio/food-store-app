@@ -1,4 +1,5 @@
-import { products, getCategories } from "../../../data/data";
+import productos from "../../../../public/data/productos.json";
+import categorias from "../../../../public/data/categorias.json";
 import type { ICategory } from "../../../types/Category";
 import type { IProducto } from "../../../types/Product";
 import { logout } from "../../../utils/auth";
@@ -33,11 +34,12 @@ inputBusqueda.addEventListener("input", manejarInputBusqueda);
 
 botonesDiv.classList.add("botones");
 
-getCategories().forEach((categoria: ICategory) => {
+categorias.forEach((categoria: ICategory) => {
   const btn = document.createElement("button");
   const img = document.createElement("img");
   img.classList.add("categoria-img");
   btn.textContent = categoria.nombre;
+  btn.setAttribute("data-id", categoria.id.toString());
   botonesDiv.classList.add("btn-categoria");
   img.src = `/images/${categoria.nombre.toLowerCase()}.png`;
   img.alt = `Imagen de ${categoria.nombre}`;
@@ -66,7 +68,7 @@ function render(prods: IProducto[]): void {
       const btnVolver = document.getElementById("btn-volver");
 
       btnVolver?.addEventListener("click", () => {
-        render(products);
+        render(productos);
       });
       return;
     }
@@ -112,17 +114,17 @@ botonesDiv.addEventListener("click", (e) => {
 
   if (button.classList.contains("active")) {
     button.classList.remove("active");
-    render(products);
+    render(productos);
     return;
   }
 
   botones.forEach((b) => b.classList.remove("active"));
   button.classList.add("active");
 
-  const categoria = button.textContent;
+  const cate = button.getAttribute("data-id");
 
-  const filtradosproducts: IProducto[] = products.filter((p) =>
-    p.categorias.some((c: ICategory) => c.nombre === categoria),
+  const filtradosproducts: IProducto[] = productos.filter((p) =>
+    p.categoria_id.some((c: number) => c === Number(cate)),
   );
 
   render(filtradosproducts);
@@ -130,7 +132,7 @@ botonesDiv.addEventListener("click", (e) => {
 
 function manejarInputBusqueda(e: Event): void {
   const query = (e.target as HTMLInputElement).value.toLowerCase();
-  const filtradosproducts: IProducto[] = products.filter((p) =>
+  const filtradosproducts: IProducto[] = productos.filter((p) =>
     p.nombre.toLowerCase().includes(query),
   );
 
@@ -148,9 +150,9 @@ function manejarAgregarAlCarrito(): void {
           (document.getElementById(`cantidad-${id}`) as HTMLInputElement)
             ?.value,
         ) || 1;
-      agregarAlCarrito(id, products, cantidad);
+      agregarAlCarrito(id, productos, cantidad);
     });
   });
 }
 
-render(products);
+render(productos);
