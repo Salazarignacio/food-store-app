@@ -1,5 +1,10 @@
 import type { IProducto } from "../../../types/Product";
-import { eliminarDelCarrito, vaciarCarrito } from "../../../utils/cart";
+import {
+  agregarCantidad,
+  eliminarDelCarrito,
+  quitarCantidad,
+  vaciarCarrito,
+} from "../../../utils/cart";
 import { getProduct } from "../../../utils/localStorage";
 import { getUser } from "../../../utils/localStorage";
 import { logout } from "../../../utils/auth";
@@ -33,7 +38,7 @@ const totalDiv = document.createElement("div");
 function renderCart(): void {
   if (cartItems.length === 0) {
     if (carritoDiv) {
-      carritoDiv.innerHTML = "<p class=\"vacio\">El carrito está vacío.</p>";
+      carritoDiv.innerHTML = '<p class="vacio">El carrito está vacío.</p>';
     }
   } else {
     if (carritoDiv) {
@@ -43,8 +48,11 @@ function renderCart(): void {
       <div class="producto-cart">
       <div><img src="${producto.imagen}" alt="${producto.nombre}"></div>
       <h3>${producto.nombre}</h3>
-        <p>${producto.cantidad || 1}</p>
+      <button class="btn-agregar" data-id="${producto.id}">+</button>
+      <p>${producto.cantidad || 1}</p>
+      <button class="btn-quitar" data-id="${producto.id}">-</button>
         <p>$${producto.precio.toLocaleString()}</p>
+    
         <p>$${(producto.precio * (producto.cantidad || 1)).toLocaleString()}</p>
         <button class="btn-eliminar" data-id="${producto.id}">Eliminar</button>
       </div>
@@ -53,7 +61,20 @@ function renderCart(): void {
         .join("");
     }
   }
-
+  const agregar = document.querySelectorAll(".btn-agregar");
+  agregar.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = Number(btn.getAttribute("data-id"));
+      agregarCantidad(id);
+    });
+  });
+  const quitar = document.querySelectorAll(".btn-quitar");
+  quitar.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const id = Number(btn.getAttribute("data-id"));
+      quitarCantidad(id);
+    });
+  });
   const botones = document.querySelectorAll(".btn-eliminar");
 
   botones.forEach((btn) => {

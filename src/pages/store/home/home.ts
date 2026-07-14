@@ -166,7 +166,7 @@ function manejarAgregarAlCarrito(): void {
           (document.getElementById(`cantidad-${id}`) as HTMLInputElement)
             ?.value,
         ) || 1;
-      agregarAlCarrito(id, productos, cantidad);
+      agregarAlCarrito(id, productos, cantidad, user);
     });
   });
 }
