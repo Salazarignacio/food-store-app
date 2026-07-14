@@ -1,5 +1,5 @@
-import productos from "../../../../public/data/productos.json";
-import categorias from "../../../../public/data/categorias.json";
+/* import productos from "../../../../public/data/productos.json"; */
+/* import categorias from "../../../../public/data/categorias.json"; */
 import type { ICategory } from "../../../types/Category";
 import type { IProducto } from "../../../types/Product";
 import { logout } from "../../../utils/auth";
@@ -34,6 +34,19 @@ inputBusqueda.addEventListener("input", manejarInputBusqueda);
 
 botonesDiv.classList.add("botones");
 
+export const obtenerDatos = async <T>(ruta: string): Promise<T> => {
+  const response = await fetch(ruta);
+  const data = await response.json();
+  return data;
+};
+
+const categorias: ICategory[] = await obtenerDatos<ICategory[]>(
+  "../../../../public/data/categorias.json",
+);
+const productos: IProducto[] = await obtenerDatos<IProducto[]>(
+  "../../../../public/data/productos.json",
+);
+
 categorias.forEach((categoria: ICategory) => {
   const btn = document.createElement("button");
   const img = document.createElement("img");
@@ -49,7 +62,6 @@ categorias.forEach((categoria: ICategory) => {
 
 function render(prods: IProducto[]): void {
   if (productosDiv) {
-    
     const cantidadEnCarrito =
       JSON.parse((getProduct() as string) || "[]").length || 0;
     cantidadProductos.innerHTML += `<p class="imagen-cart cantidad-productos">${cantidadEnCarrito}</p>`;
@@ -75,6 +87,8 @@ function render(prods: IProducto[]): void {
     const productosDiv3 = document.createElement("div");
     productosDiv3.classList.add("listado-productos");
 
+    prods = prods.filter((p) => p.disponible && !p.eliminado);
+
     prods.forEach((producto: IProducto) => {
       const div = document.createElement("div");
       div.classList.add("producto");
@@ -86,14 +100,16 @@ function render(prods: IProducto[]): void {
       </div>
       
       <h3>${producto.nombre}</h3>
+      <p class="descripcion">${producto.descripcion}</p>
       
       <p class="precio">$${producto.precio.toLocaleString()}</p>
       <div class="agregar-carrito">
-
+      
       <input type="number" min="1" max="${producto.stock}" value="1" id="cantidad-${producto.id}" class="input-cantidad">
       <button class="btn-agregar" data-id="${producto.id}">Agregar</button>
-
+      
       </div>
+      <p class="disponible">${producto.disponible ? "Disponible" : "No disponible"}</p>
 
     `;
       productosDiv3.appendChild(div);

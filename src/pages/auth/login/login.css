@@ -68,6 +68,10 @@ select:focus {
 }
 
 /* Botón */
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 button {
   margin-top: 10px;
   padding: 10px;

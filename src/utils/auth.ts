@@ -14,7 +14,8 @@ export const checkAuhtUser = (
 
   if (!user) {
     console.log("no existe en local");
-    navigate(redireccion1);
+    navigate(redireccion1); 
+    
     return;
   } else {
     const parseUser: IUser = JSON.parse(user);

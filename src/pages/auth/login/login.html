@@ -1,40 +1,49 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="login.css" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
-    
+  <body>
     <form id="form">
-        <h1> Login</h1>
-<img src="../../../../public/images/b6e11136-17fe-4a3e-9aca-699f1e8683d5.png" alt="Logo" class="logo-img" style="width: 180px; margin: auto;">
-        <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="off" placeholder="example@example.com">
-        </div>
-        <div>
-            <label for="password">password</label>
-            <input type="password" id="password" name="password" autocomplete="off" placeholder="********">
-        </div>
-       <!--  <div>
-            <label for="rol">Rol</label>
-            <select name="rol" id="rol">
-                <option value="">Seleccione un rol</option>
-                <option value="client">Cliente</option>
-                <option value="admin">Admin</option>
-            </select>
-        </div> -->
+      <h1>SuperFood</h1>
+      <h2>Iniciar Sesión</h2>
+      <div>
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          autocomplete="off"
+          placeholder="example@example.com"
+        />
+      </div>
+      <div>
+        <label for="password">password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          autocomplete="off"
+          placeholder="********"
+        />
+      </div>
 
-        <button type="submit">Ingresar</button>
-        <p>¿No tienes cuenta? <a href="../registro/registro.html">Regístrate aquí</a></p>
+      <button type="submit" id="ingresar-btn" class="disabled">Ingresar</button>
+      <p>
+        ¿No tienes cuenta?
+        <a href="../registro/registro.html">Regístrate aquí</a>
+      </p>
+      <p>Cuentas de prueba:</p>
+      <ul>
+        <li>Admin: admin@example.com / 123456</li>
+        <li>Cliente: client@example.com / 123456</li>
+      </ul>
     </form>
 
     <script type="module" src="./login.js"></script>
-</body>
-
+  </body>
 </html>

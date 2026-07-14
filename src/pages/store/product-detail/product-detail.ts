@@ -1,8 +1,10 @@
-import productos from "../../../../public/data/productos.json";
+/* import productos from "../../../../public/data/productos.json"; */
 import { agregarAlCarrito } from "../../../utils/cart";
 import { getProduct } from "../../../utils/localStorage";
 import { getUser } from "../../../utils/localStorage";
 import { logout } from "../../../utils/auth";
+import { IProducto } from "../../../types/Product";
+import { obtenerDatos } from "../home/home";
 
 const user = JSON.parse(getUser() || "{}");
 if (!user?.loggedIn) {
@@ -24,6 +26,10 @@ const cantidadProductos = document.getElementById(
   "cantidad-productos",
 ) as HTMLDivElement;
 
+const productos: IProducto[] = await obtenerDatos<IProducto[]>(
+  "../../../../public/data/productos.json",
+);
+
 const producto = productos.find((p) => p.id === id);
 
 if (producto && productoDiv) {
@@ -36,6 +42,8 @@ if (producto && productoDiv) {
   <div class="contenedor">
   <h2>${producto.nombre}</h2>
   <p>${producto.descripcion}</p>
+  <p>Stock: ${producto.stock}</p>
+  <p>${producto.disponible ? "Disponible" : "No disponible"}</p>
   
   <p class="precio">$${producto.precio.toLocaleString()}</p>
   <div class="agregar-carrito">
@@ -52,7 +60,7 @@ if (producto && productoDiv) {
   </div>
     `;
 
-    productoDiv.appendChild(userDiv)
+  productoDiv.appendChild(userDiv);
 
   const btnAgregar = document.querySelector(`.btn-agregar[data-id="${id}"]`);
 

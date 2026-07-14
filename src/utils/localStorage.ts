@@ -1,9 +1,10 @@
 import type { IUser } from "../types/IUser";
 import type { IProducto } from "../types/Product";
+import { UserDTO } from "../types/UserDTO";
 
 /* USER */
 
-export const saveUser = (user: IUser) => {
+export const saveUser = (user: UserDTO) => {
   const parseUser = JSON.stringify(user);
   localStorage.setItem("userData", parseUser);
 };

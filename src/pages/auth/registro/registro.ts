@@ -1,23 +1,59 @@
 import type { IUser } from "../../../types/IUser";
+import { Rol } from "../../../types/Rol";
+import { UserDTO } from "../../../types/UserDTO";
 import {
   getUsersLocalStorage,
+  saveUser,
   saveUsersLocalStorage,
 } from "../../../utils/localStorage";
 import { navigate } from "../../../utils/navigate";
 
 const inputEmail = document.getElementById("email") as HTMLInputElement;
 const inputPassword = document.getElementById("password") as HTMLInputElement;
-const selectRol = document.getElementById("rol") as HTMLSelectElement;
+
 const form = document.getElementById("form") as HTMLFormElement;
 const usersJson = getUsersLocalStorage();
 const users: IUser[] = usersJson ? usersJson : [];
-console.log(users);
+
+let usuarios: any[] = [];
+
+fetch("/data/usuarios.json")
+  .then((response) => response.json())
+  .then((data) => {
+    usuarios = data;
+  });
+
+inputEmail.addEventListener("input", () => {
+  if (inputEmail.value !== "" && inputPassword.value !== "") {
+    form.querySelector("button")?.removeAttribute("disabled");
+    form.querySelector("button")?.classList.remove("disabled");
+  }
+});
+inputPassword.addEventListener("input", () => {
+  if (inputEmail.value !== "" && inputPassword.value !== "") {
+    form.querySelector("button")?.removeAttribute("disabled");
+    form.querySelector("button")?.classList.remove("disabled");
+  } else {
+    form.querySelector("button")?.setAttribute("disabled", "true");
+    form.querySelector("button")?.classList.add("disabled");
+  }
+});
+
+inputPassword.addEventListener("input", () => {
+  if (inputEmail.value !== "" && inputPassword.value !== "") {
+    form.querySelector("button")?.removeAttribute("disabled");
+    form.querySelector("button")?.classList.remove("disabled");
+  } else {
+    form.querySelector("button")?.setAttribute("disabled", "true");
+    form.querySelector("button")?.classList.add("disabled");
+  }
+});
 
 form.addEventListener("submit", (e: SubmitEvent) => {
   e.preventDefault();
   const valueEmail = inputEmail.value;
   const valuePassword = inputPassword.value;
-  const valueRol = selectRol.value;
+  const valueRol: Rol = "client";
 
   const existe = users?.some((user) => user.email === valueEmail);
 
@@ -26,10 +62,19 @@ form.addEventListener("submit", (e: SubmitEvent) => {
       email: valueEmail,
       loggedIn: true,
       password: valuePassword,
-      role: valueRol as "admin" | "client",
+      role: valueRol,
     };
+
+    const userDTO: UserDTO = {
+      email: valueEmail,
+      loggedIn: true,
+      role: valueRol,
+    };
+
     saveUsersLocalStorage(user);
-    navigate(`/src/pages/${valueRol}/home/home.html`);
+    saveUser(userDTO);
+    let ruta : any = valueRol  === "client" ? "/src/pages/store/home/home.html" : "/src/pages/admin/home/home.html";
+    navigate(ruta);
   } else {
     alert("El usuario ya existe");
   }

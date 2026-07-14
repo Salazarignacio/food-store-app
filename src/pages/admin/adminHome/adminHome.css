@@ -1,0 +1,309 @@
+/* General Reset & Base Styles */
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #f3f4f6;
+  color: #1f2937;
+}
+
+.contenedor {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Redundant elements at the bottom of the HTML are hidden to match the clean design */
+#logoutButton,
+.contenedor > a[href*="store/home"] {
+  display: none;
+}
+
+/* Navbar styles */
+.contenedor_navBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  height: 64px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+.contenedor_navBar > a {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f97316; /* Naranja corporativo de comida */
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contenedor_navBar > a::before {
+  content: "🍕";
+  font-size: 1.35rem;
+}
+
+.contenedor_navBar ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+.contenedor_navBar li {
+  margin: 0;
+}
+
+.contenedor_navBar a {
+  text-decoration: none;
+  color: #4b5563;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+
+.contenedor_navBar a:hover {
+  color: #f97316;
+}
+
+.contenedor_navBar button {
+  background-color: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.contenedor_navBar button:hover {
+  background-color: #e5e7eb;
+}
+
+.contenedor_navBar button a {
+  color: #374151;
+  font-weight: 600;
+}
+
+/* Main Layout */
+.contenedor_main {
+  display: flex;
+  flex: 1;
+  min-height: calc(100vh - 64px);
+  align-items: stretch;
+}
+
+/* Sidebar Styles */
+.contenedor_main_sideBar {
+  width: 260px;
+  background-color: #ffffff;
+  border-right: 1px solid #e5e7eb;
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.contenedor_main_sideBar h2 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0 0 8px 12px;
+}
+
+.contenedor_main_sideBar h3 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 24px 12px;
+}
+
+.contenedor_main_sideBar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contenedor_main_sideBar li {
+  margin: 0;
+}
+
+.contenedor_main_sideBar a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: #4b5563;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.contenedor_main_sideBar a:hover {
+  background-color: #f3f4f6;
+  color: #111827;
+}
+
+/* Add icons to Sidebar links to match instruction design */
+.contenedor_main_sideBar li:nth-child(1) a::before { content: "📊"; font-size: 1.1rem; }
+.contenedor_main_sideBar li:nth-child(2) a::before { content: "👥"; font-size: 1.1rem; }
+.contenedor_main_sideBar li:nth-child(3) a::before { content: "📦"; font-size: 1.1rem; }
+.contenedor_main_sideBar li:nth-child(4) a::before { content: "📋"; font-size: 1.1rem; }
+
+/* Set Active element: Dashboard is active in the PDF screenshot */
+.contenedor_main_sideBar li:nth-child(1) a {
+  background-color: #ffedd5;
+  color: #ea580c;
+  font-weight: 600;
+}
+
+/* Main Content Area */
+.contenedor_main_section {
+  flex: 1;
+  padding: 40px;
+  background-color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: auto;
+  height: auto;
+}
+
+.contenedor_main_section_titulo h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0;
+}
+
+/* Cards Grid */
+.contenedor_main_section_gestion {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  background-color: transparent;
+  padding: 0;
+}
+
+.gestion {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+  border-radius: 12px;
+  min-height: 160px;
+  color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.gestion:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Gradients for cards matching TPI_prog3_foodstore page 7 screenshot */
+.categorias {
+  background: linear-gradient(135deg, #818cf8, #4f46e5); /* Indigo */
+}
+
+.productos {
+  background: linear-gradient(135deg, #ec4899, #db2777); /* Pink */
+}
+
+.pedidos {
+  background: linear-gradient(135deg, #60a5fa, #2563eb); /* Blue */
+}
+
+.disponibles {
+  background: linear-gradient(135deg, #34d399, #059669); /* Emerald Green */
+}
+
+/* Semi-transparent icon decorations inside cards */
+.gestion::after {
+  position: absolute;
+  right: -10px;
+  bottom: -15px;
+  font-size: 5.5rem;
+  opacity: 0.15;
+  z-index: 1;
+}
+
+
+
+.gestion h4 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  z-index: 2;
+}
+
+.gestion p {
+  margin: 16px 0;
+  font-size: 2.75rem;
+  font-weight: 800;
+  line-height: 1;
+  z-index: 2;
+}
+
+.gestion button {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 2;
+  align-self: flex-start;
+}
+
+.gestion button:hover {
+  background-color: #ffffff;
+  color: #111827;
+  border-color: #ffffff;
+}
+
+/* Quick Summary Card */
+.contenedor_main_section_resumen {
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.contenedor_main_section_resumen h4 {
+  margin: 0 0 12px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contenedor_main_section_resumen h4::before {
+  content: "📊";
+  font-size: 1.25rem;
+}
+
+.contenedor_main_section_resumen p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #6b7280;
+}

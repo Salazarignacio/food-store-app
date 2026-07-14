@@ -1,51 +1,78 @@
 import type { IUser } from "../../../types/IUser";
-import usuarios from "../../../../public/data/usuarios.json";
 
-import { getUsersLocalStorage } from "../../../utils/localStorage";
+import { getUsersLocalStorage, saveUser } from "../../../utils/localStorage";
 import { navigate } from "../../../utils/navigate";
 import { Rol } from "../../../types/Rol";
+import { UserDTO } from "../../../types/UserDTO";
 
 const form = document.getElementById("form") as HTMLFormElement;
 const inputEmail = document.getElementById("email") as HTMLInputElement;
 const inputPassword = document.getElementById("password") as HTMLInputElement;
+const ingresarBtn = document.getElementById(
+  "ingresar-btn",
+) as HTMLButtonElement;
 
-form.addEventListener("submit", (e: SubmitEvent) => {
+inputEmail.addEventListener("input", () => {
+  if (inputEmail.value !== "" && inputPassword.value !== "") {
+    ingresarBtn?.removeAttribute("disabled");
+    ingresarBtn.classList.remove("disabled");
+  } else {
+    ingresarBtn?.setAttribute("disabled", "true");
+    ingresarBtn.classList.add("disabled");
+  }
+});
+inputPassword.addEventListener("input", () => {
+  if (inputEmail.value !== "" && inputPassword.value !== "") {
+    ingresarBtn?.removeAttribute("disabled");
+    ingresarBtn.classList.remove("disabled");
+  } else {
+    ingresarBtn?.setAttribute("disabled", "true");
+    ingresarBtn.classList.add("disabled");
+  }
+});
+
+form.addEventListener("submit", async (e: SubmitEvent) => {
   e.preventDefault();
 
-  const users: any[] = usuarios || [];
-  console.log(users);
-  
-  const valueEmail = inputEmail.value;
-  const valuePassword = inputPassword.value;
-  
-  const user = users.find(
-    (u) => u.email === valueEmail && u.password === valuePassword,
-  );
-  const usersStorage: IUser[] = getUsersLocalStorage() || [];
-  console.log(usersStorage);
-  const userStorage = usersStorage.find(
-    (u) => u.email === valueEmail && u.password === valuePassword,
-  );
-
-  if (!user && !userStorage) {
-    alert("Credenciales incorrectass");
-    return;
-  }
-
-  const Role: Rol = user?.role || userStorage?.role;
-  const loggedInUser: IUser = {
-    email: valueEmail,
-    password: valuePassword,
-    role: Role,
-    loggedIn: true,
+  const obtenerUsuariosJSON = async (): Promise<any[]> => {
+    const response = await fetch("/data/usuarios.json");
+    const data = await response.json();
+    return data;
   };
 
-  const parseUser = JSON.stringify(loggedInUser);
-  localStorage.setItem("userData", parseUser);
+  const usuariosJSON = await obtenerUsuariosJSON();
 
-  if (loggedInUser.role.toLowerCase() === "admin") {
-    navigate("/src/pages/admin/home/home.html");
-  } else if (loggedInUser.role.toLowerCase() === "client") {
-    navigate("/src/pages/client/home/home.html");
+  const valueEmail = inputEmail.value;
+  const valuePassword = inputPassword.value;
+
+  const usuarioJSON: IUser | undefined = usuariosJSON.find(
+    (u) => u.email === valueEmail && u.password === valuePassword,
+  );
+  const usuariosStorage = getUsersLocalStorage() || [];
+
+  const usuarioStorage = usuariosStorage.find(
+    (u) => u.email === valueEmail && u.password === valuePassword,
+  );
+  const usuarioAutenticado = usuarioJSON || usuarioStorage;
+
+  if (usuarioAutenticado) {
+    const Role: Rol = usuarioAutenticado?.role;
+    const loggedInUser: UserDTO = {
+      email: valueEmail,
+      loggedIn: true,
+      role: Role,
+    };
+
+    saveUser(loggedInUser);
+
+    let ruta: any =
+      loggedInUser.role.toLowerCase() === "admin"
+        ? "/src/pages/admin/adminHome/adminHome.html"
+        : "/src/pages/store/home/home.html";
+
+    navigate(ruta);
+  } else {
+    alert("Credenciales incorrectass");
+    return;
   }
 });

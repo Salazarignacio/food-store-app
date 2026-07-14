@@ -1,38 +1,43 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../login/login.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../login/login.css" />
     <title>Document</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <form id="form">
-        <h1>Registrate</h1>
-        <img src="../../../../public/images/b6e11136-17fe-4a3e-9aca-699f1e8683d5.png" alt="Logo" class="logo-img" style="width: 180px; margin: auto;">  
-        <div>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="off" placeholder="example@example.com">
-        </div>
-        <div>
-            <label for="password">password</label>
-            <input type="password" id="password" name="password" autocomplete="off" placeholder="********">
-        </div>
-        <div>
-            <label for="rol">Rol</label>
-            <select name="rol" id="rol">
-                <option value="">Seleccione un rol</option>
-                <option value="client">Cliente</option>
-                <option value="admin">Admin</option>
-            </select>
-        </div>
-        <button type="submit">Registrarse</button>
-        <a href="../login/login.html">¿Ya tienes cuenta? Inicia sesión aquí</a>
+      <h1>SuperFood</h1>
+      <h2>Registro</h2>
+      <div>
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          autocomplete="off"
+          placeholder="example@example.com"
+        />
+      </div>
+      <div>
+        <label for="password">password</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          autocomplete="off"
+          placeholder="********"
+        />
+      </div>
+      <div>
+        <label for="rol">Rol</label>
+      </div>
+      <button type="submit" class="disabled">Registrarse</button>
+      <a href="../login/login.html">¿Ya tienes cuenta? Inicia sesión aquí</a>
     </form>
 
     <script type="module" src="./registro.js"></script>
-</body>
-
+  </body>
 </html>
