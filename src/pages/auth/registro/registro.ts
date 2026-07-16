@@ -55,10 +55,11 @@ form.addEventListener("submit", (e: SubmitEvent) => {
   const valuePassword = inputPassword.value;
   const valueRol: Rol = "client";
 
-  const existe = users?.some((user) => user.email === valueEmail);
+  const existe = users?.some((user) => user.email === valueEmail) || usuarios?.some((u) => u.email === valueEmail);
 
   if (!existe) {
     const user: IUser = {
+      id: Date.now(),
       email: valueEmail,
       loggedIn: true,
       password: valuePassword,

@@ -5,20 +5,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../style.css" />
     <script src="https://kit.fontawesome.com/02894371fc.js" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <title>Mi Carrito</title>
   </head>
   <body>
-    <div class="contenedor-carrito">
-      <div id="seccion-carrito">
-        <a href="/src/pages/store/home/home.html"
-          ><img
-            src="/images/b6e11136-17fe-4a3e-9aca-699f1e8683d5.png"
-            alt="Logo"
-            class="logo-img"
-        /></a>
+    <!-- Encabezado / Logo -->
+    <header class="contenedor1">
+      <a href="/src/pages/store/home/home.html">
+        <img src="/images/b6e11136-17fe-4a3e-9aca-699f1e8683d5.png" alt="Logo" class="logo-img" />
+      </a>
+      <h1>Food Store - Mi Carrito</h1>
+      <a href="/src/pages/client/orders/orders.html" class="btn-mis-pedidos">Mis Pedidos</a>
+    </header>
+
+    <!-- Contenido principal del Carrito -->
+    <main class="contenedor-carrito-custom">
+      <h2 class="titulo-carrito">Mi Carrito</h2>
+      
+      <div class="main-carrito-layout">
+        <!-- Listado de Productos -->
+        <div id="productos-carrito-lista" class="productos-carrito-lista">
+          <!-- Se cargan dinámicamente -->
+        </div>
+
+        <!-- Resumen del Pedido -->
+        <div id="resumen-pedido-card" class="resumen-pedido-card">
+          <!-- Se carga dinámicamente -->
+        </div>
       </div>
-      <div><button class="btn-agregar" id="vaciar-carrito">Vaciar Carrito</button></div>
+    </main>
+
+    <!-- Modal de Confirmación de Pedido -->
+    <div id="checkout-modal" class="modal-overlay" style="display: none;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Completar Pedido</h3>
+          <button id="close-modal-btn" class="close-btn">&times;</button>
+        </div>
+        <form id="checkout-form" class="modal-form">
+          <div class="form-group">
+            <label for="checkout-telefono">Teléfono</label>
+            <input type="text" id="checkout-telefono" required placeholder="Ej: +54 9 261 123-4567" />
+          </div>
+          <div class="form-group">
+            <label for="checkout-direccion">Dirección de Entrega</label>
+            <input type="text" id="checkout-direccion" required placeholder="Calle, número, piso, depto" />
+          </div>
+          <div class="form-group">
+            <label for="checkout-metodo-pago">Método de Pago</label>
+            <select id="checkout-metodo-pago" required>
+              <option value="" disabled selected>Seleccione un método</option>
+              <option value="EFECTIVO">Efectivo</option>
+              <option value="TARJETA">Tarjeta</option>
+              <option value="TRANSFERENCIA">Transferencia</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="checkout-notas">Notas adicionales (opcional)</label>
+            <textarea id="checkout-notas" placeholder="Instrucciones especiales, timbre, etc."></textarea>
+          </div>
+          <div class="modal-total-section">
+            <span>Total a pagar:</span>
+            <span id="modal-total-pago" class="modal-total-value">$0.00</span>
+          </div>
+          <button type="submit" class="btn-confirmar-pedido">Confirmar Pedido</button>
+        </form>
+      </div>
     </div>
+
     <script type="module" src="./cart.js"></script>
   </body>
 </html>

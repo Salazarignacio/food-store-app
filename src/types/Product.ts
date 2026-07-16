@@ -1,5 +1,3 @@
-import type { ICategory } from "./Category";
-
 export interface IProducto {
   id: number;
   eliminado: boolean;

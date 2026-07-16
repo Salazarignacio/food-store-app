@@ -1,16 +1,17 @@
 import { IUser } from "../types/IUser";
 import type { IProducto } from "../types/Product";
 import { getProduct, saveProduct } from "./localStorage";
+import { navigate } from "./navigate";
 
 export const agregarAlCarrito = (
   id: number,
   products: IProducto[],
   cantidad: number,
-  usuario: IUser
+  usuario: IUser,
 ) => {
   if (!usuario?.loggedIn) {
     alert("Debes iniciar sesión para agregar productos al carrito.");
-    window.location.href = "../../auth/login/login.html";
+    navigate("../../auth/login/login.html");
     return;
   }
   const producto = products.find((p) => p.id === id);
@@ -19,7 +20,9 @@ export const agregarAlCarrito = (
     : [];
 
   if (producto) {
-    const productoEnCarrito: IProducto | undefined = productsCart.find((p) => p.id === id);
+    const productoEnCarrito: IProducto | undefined = productsCart.find(
+      (p) => p.id === id,
+    );
 
     if (productoEnCarrito && productoEnCarrito.cantidad) {
       productoEnCarrito.cantidad += cantidad;
@@ -30,31 +33,40 @@ export const agregarAlCarrito = (
     saveProduct(productsCart);
     console.log(productsCart);
   }
-  window.location.reload();
+  navigate(window.location.href);
 };
 
 export const agregarCantidad = (id: number) => {
   const productsCart: IProducto[] = getProduct()
     ? JSON.parse(getProduct() as string)
     : [];
-    const encontrado : IProducto | undefined = productsCart.find((p) => p.id ===id);
-    if(encontrado){
-      encontrado.cantidad = (encontrado.cantidad || 1) + 1;
-      saveProduct(productsCart);
-      window.location.reload();
-    }
-}
+  const encontrado: IProducto | undefined = productsCart.find(
+    (p) => p.id === id,
+  );
+  if (
+    encontrado?.cantidad !== undefined &&
+    encontrado.stock > encontrado?.cantidad
+  ) {
+    encontrado.cantidad = (encontrado.cantidad || 1) + 1;
+    encontrado.stock = encontrado.stock - 1;
+    saveProduct(productsCart);
+    window.location.reload();
+  }
+};
 export const quitarCantidad = (id: number) => {
   const productsCart: IProducto[] = getProduct()
     ? JSON.parse(getProduct() as string)
     : [];
-    const encontrado : IProducto | undefined = productsCart.find((p) => p.id ===id);
-    if(encontrado){
-      encontrado.cantidad = (encontrado.cantidad || 1) - 1;
-      saveProduct(productsCart);
-      window.location.reload();
-    }
-}
+  const encontrado: IProducto | undefined = productsCart.find(
+    (p) => p.id === id,
+  );
+  if (encontrado?.cantidad !== undefined && encontrado.cantidad > 0) {
+    encontrado.cantidad = (encontrado.cantidad || 1) - 1;
+    encontrado.stock = encontrado.stock + 1;
+    saveProduct(productsCart);
+    window.location.reload();
+  }
+};
 
 export const eliminarDelCarrito = (id: number) => {
   const productsCart: IProducto[] = getProduct()
