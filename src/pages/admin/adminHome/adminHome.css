@@ -158,9 +158,14 @@ body {
 .contenedor_main_sideBar li:nth-child(2) a::before { content: "👥"; font-size: 1.1rem; }
 .contenedor_main_sideBar li:nth-child(3) a::before { content: "📦"; font-size: 1.1rem; }
 .contenedor_main_sideBar li:nth-child(4) a::before { content: "📋"; font-size: 1.1rem; }
+.contenedor_main_sideBar li:nth-child(6) a::before { content: "🏬"; font-size: 1.1rem; }
 
 /* Set Active element: Dashboard is active in the PDF screenshot */
-.contenedor_main_sideBar li:nth-child(1) a {
+a{
+  text-decoration: none;
+  color: #ffff
+ }
+.activo {
   background-color: #ffedd5;
   color: #ea580c;
   font-weight: 600;
