@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../adminHome/adminHome.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="./products.css" />
+    <title>Gestión de Productos</title>
   </head>
 
   <body>
@@ -13,8 +14,8 @@
         <a>Food Store</a>
         <ul>
           <li><a href="../../store/home/home.html">Tienda</a></li>
-          <li><a href="../../store/home/home.html">Panel Admin</a></li>
-          <li><a href="../../store/home/home.html">Ignacio</a></li>
+          <li><a href="../adminHome/adminHome.html">Panel Admin</a></li>
+          <li><a href="#">Ignacio</a></li>
           <li>
             <button>
               <a href="../../store/home/home.html">Cerrar Sesión</a>
@@ -34,14 +35,35 @@
           </ul>
         </div>
         <div class="contenedor_main_section">
-          
-          <div class="contenedor_main_section_gestion">Productos</div>
+          <div class="header-gestion">
+            <h2>Gestión de Productos</h2>
+            <button class="btn-nuevo-producto">+ Nuevo Producto</button>
+          </div>
+          <div class="tabla-contenedor">
+            <table class="tabla-productos">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Imagen</th>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Precio</th>
+                  <th>Stock</th>
+                  <th>Estado</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tabla-body">
+                <!-- Los productos se cargarán dinámicamente aquí -->
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <a href="../../store/home/home.html">Ir a la tienda</a>
       <button id="logoutButton">Logout</button>
     </div>
 
-    <script type="module" src="../adminHome/adminHome.ts"></script>
+    <script type="module" src="./productos.ts"></script>
   </body>
 </html>

@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../adminHome/adminHome.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="./categories.css" />
+    <title>Gestión de Categorías</title>
   </head>
 
   <body>
@@ -33,14 +34,33 @@
             <li><a href="../orders/pedidos.html">Pedidos</a></li>
           </ul>
         </div>
-        <div class="contenedor_main_section" id="contenedor">
-          Categorias
+        <div class="contenedor_main_section">
+          <div class="header-gestion">
+            <h2>Gestión de Categorías</h2>
+            <button class="btn-nueva-categoria">+ Nueva Categoria</button>
+          </div>
+          <div class="tabla-contenedor">
+            <table class="tabla-categorias">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Imagen</th>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody id="tabla-body">
+                <!-- Las categorías se cargarán dinámicamente aquí -->
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <a href="../../store/home/home.html">Ir a la tienda</a>
       <button id="logoutButton">Logout</button>
     </div>
 
-    <script type="module" src="./categories.js"></script>
+    <script type="module" src="./categories.ts"></script>
   </body>
 </html>
