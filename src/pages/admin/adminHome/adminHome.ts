@@ -11,9 +11,10 @@ buttonLogout?.addEventListener("click", () => {
 
 const mailUser : HTMLElement | null = document.getElementById("mail-user");
 const getUserJSON : any = getUser();
-const user = JSON.parse(getUserJSON); 
-if (user && mailUser) {
-  if (user.rol.toLowerCase() == "client") {
+const user = JSON.parse(getUserJSON || "{}"); 
+if (user && user.email && mailUser) {
+  const role = user.role ? user.role.toLowerCase() : "";
+  if (role === "client") {
     mailUser.classList.add("invisible");
   }
   mailUser.innerHTML = `<p>${user.email}</p>`;
