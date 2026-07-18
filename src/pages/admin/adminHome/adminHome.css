@@ -1,7 +1,15 @@
 /* General Reset & Base Styles */
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial,
+    sans-serif;
   background-color: #f3f4f6;
   color: #1f2937;
 }
@@ -154,17 +162,35 @@ body {
 }
 
 /* Add icons to Sidebar links to match instruction design */
-.contenedor_main_sideBar li:nth-child(1) a::before { content: "📊"; font-size: 1.1rem; }
-.contenedor_main_sideBar li:nth-child(2) a::before { content: "👥"; font-size: 1.1rem; }
-.contenedor_main_sideBar li:nth-child(3) a::before { content: "📦"; font-size: 1.1rem; }
-.contenedor_main_sideBar li:nth-child(4) a::before { content: "📋"; font-size: 1.1rem; }
-.contenedor_main_sideBar li:nth-child(6) a::before { content: "🏬"; font-size: 1.1rem; }
+.contenedor_main_sideBar li:nth-child(1) a::before {
+  content: "📊";
+  font-size: 1.1rem;
+}
+.contenedor_main_sideBar li:nth-child(2) a::before {
+  content: "👥";
+  font-size: 1.1rem;
+}
+.contenedor_main_sideBar li:nth-child(3) a::before {
+  content: "📦";
+  font-size: 1.1rem;
+}
+.contenedor_main_sideBar li:nth-child(4) a::before {
+  content: "📋";
+  font-size: 1.1rem;
+}
+.contenedor_main_sideBar li:nth-child(6) a::before {
+  content: "🏬";
+  font-size: 1.1rem;
+}
 
 /* Set Active element: Dashboard is active in the PDF screenshot */
-a{
+a {
   text-decoration: none;
-  color: #ffff
- }
+  color: #ffff;
+}
+.invisible {
+  display: none;
+}
 .activo {
   background-color: #ffedd5;
   color: #ea580c;
@@ -207,15 +233,21 @@ a{
   border-radius: 12px;
   min-height: 160px;
   color: #ffffff;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
   position: relative;
   overflow: hidden;
 }
 
 .gestion:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
 }
 
 /* Gradients for cards matching TPI_prog3_foodstore page 7 screenshot */
@@ -244,8 +276,6 @@ a{
   opacity: 0.15;
   z-index: 1;
 }
-
-
 
 .gestion h4 {
   margin: 0;

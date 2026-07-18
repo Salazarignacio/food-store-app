@@ -2,7 +2,7 @@
 /* import categorias from "../../../../public/data/categorias.json"; */
 import type { ICategory } from "../../../types/Category";
 import type { IProducto } from "../../../types/Product";
-import { logout } from "../../../utils/auth";
+import { logout, checkoutUser } from "../../../utils/auth";
 import { agregarAlCarrito } from "../../../utils/cart";
 import { getProduct } from "../../../utils/localStorage";
 import { getUser } from "../../../utils/localStorage";
@@ -12,6 +12,8 @@ if (!user?.loggedIn) {
   alert("Debes iniciar sesión para acceder a la tienda.");
   window.location.href = "../../auth/login/login.html";
 }
+
+checkoutUser();
 
 const userDiv = document.createElement("div");
 userDiv.classList.add("user-info");

@@ -1,71 +1,90 @@
-🍔 Food Store App
+# 🍔 Food Store App
 
-Aplicación web de carrito de compras para una tienda de comidas, inspirada en plataformas como PedidosYa. Desarrollada con TypeScript, HTML y CSS puro, sin uso de frameworks.
+Aplicación web de carrito de compras y panel de control para una tienda de comidas, inspirada en plataformas como PedidosYa. Desarrollada con **TypeScript**, **HTML5** y **CSS3 puro** (sin frameworks de JS/CSS), y configurada y empaquetada con **Vite**.
 
-📌 Enlace al Deploy https://parcial-programacion3.vercel.app/src/pages/auth/login/login.html
+---
 
-🚀 Descripción
+## 🛠️ Tecnologías Utilizadas
 
-Food Store es una app frontend que permite a los usuarios registrarse, iniciar sesión y realizar compras agregando productos a un carrito dinámico. La información se persiste en el navegador utilizando LocalStorage, tanto para los datos del usuario como para el estado del carrito.
+* **Lenguaje**: TypeScript
+* **Maquetado**: HTML5 Semántico
+* **Estilos**: CSS3 Puro (con variables personalizadas, flexbox, CSS Grid y transiciones avanzadas)
+* **API de Navegador**: LocalStorage (para persistencia de sesión del usuario, productos en el carrito e historial de compras)
+* **Empaquetador / Servidor Dev**: Vite
+* **Iconografía**: FontAwesome
 
-El foco del proyecto estuvo en construir una experiencia de usuario clara, intuitiva y visualmente moderna.
+---
 
-🛠️ Tecnologías utilizadas
-TypeScript
-HTML5
-CSS3
-LocalStorage (Web API)
-✨ Funcionalidades principales
-🔐 Autenticación de usuario
-Registro de nuevos usuarios
-Login persistente usando LocalStorage
-🛍️ Tienda de productos
-Visualización de productos con imágenes claras y definidas
-Página de detalle de producto
-🛒 Carrito de compras
-Agregado de productos con cantidad personalizada
-Cálculo automático de:
-Subtotales por producto
-Total general
-Persistencia del carrito en LocalStorage
-🔔 Indicador de carrito
-Notificación visual con la cantidad de productos agregados
-🎨 Diseño y UX
-Interfaz moderna y limpia
-Uso de hovers interactivos para mejorar la experiencia
-Información clara y bien jerarquizada
-Diseño responsive
-Enfoque en usabilidad y feedback visual al usuario
-📂 Estructura general
-/src
-  /pages
-    /auth
-      login
-      register
-    /store
-    /product-detail
-    /cart
-  /scripts
-  /styles
-index.html
-💾 Persistencia de datos
+## 🚀 Instalación y Ejecución Local
 
-La aplicación utiliza LocalStorage para:
+Sigue los siguientes pasos para clonar y ejecutar el proyecto en tu máquina local:
 
-Guardar información del usuario autenticado
-Mantener el estado del carrito
-Gestionar los productos agregados
+### Prerrequisitos
 
-Esto permite que la sesión y el carrito se mantengan incluso al recargar la página.
+Asegúrate de tener instalado **Node.js** (versión 20.0.0 o superior recomendada) en tu sistema.
 
-📸 Capturas
+### Pasos de Instalación
 
-![alt text](image.png)
-![alt text](image-1.png)
-![alt text](image-2.png)
+1. **Instalar Dependencias**
+   Instala los paquetes necesarios utilizando npm (o pnpm si lo tienes instalado):
+   ```bash
+   npm install
+   ```
 
-🔗 Demo / Repo
-📦 Repositorio: (agregá acá el link a tu repo)
-📌 Notas
+2. **Iniciar el Servidor de Desarrollo**
+   Ejecuta el servidor local de Vite:
+   ```bash
+   npm run dev
+   ```
+   Una vez iniciado, abre la URL provista por la consola (normalmente `http://localhost:5173`) en tu navegador para ver la aplicación.
 
-Este proyecto fue desarrollado como parte de una evaluación académica, con el objetivo de aplicar conceptos de desarrollo frontend sin frameworks, manejo de estado y buenas prácticas de UX/UI.
+3. **Compilar para Producción**
+   Si deseas generar la build optimizada y minificada para producción, ejecuta:
+   ```bash
+   npm run build
+   ```
+   Esto generará los archivos correspondientes dentro de la carpeta `dist`.
+
+4. **Previsualizar la Build**
+   Puedes previsualizar la compilación de producción de forma local ejecutando:
+   ```bash
+   npm run preview
+   ```
+
+---
+
+## 🔐 Credenciales de Prueba
+
+Para ingresar a la aplicación y probar los diferentes flujos según el rol asignado, puedes utilizar las siguientes cuentas:
+
+### 1. Rol Administrador (ADMIN)
+Los administradores tienen acceso completo al panel de control para gestionar categorías, productos y visualizar todos los pedidos recibidos.
+
+* **Email**: `admin@food.com`
+* **Contraseña**: `admin123`
+
+*(Nota: También puedes acceder con la cuenta del archivo de datos: `santiago.perez@gmail.com` / `admin123`)*
+
+### 2. Rol Cliente (CLIENT)
+Los clientes pueden navegar por el catálogo general de comidas, filtrar categorías, detallar productos, agregarlos al carrito de compras y registrar órdenes.
+
+* **Email**: `cliente@food.com`
+* **Contraseña**: `cliente123`
+
+*(Nota: También puedes acceder con la cuenta del archivo de datos: `lucia.fernandez@gmail.com` / `abcd`)*
+
+---
+
+## 📂 Estructura del Proyecto
+
+* `src/`: Carpeta contenedora del código fuente.
+  * `pages/`: Vistas principales organizadas por módulos de negocio:
+    * `auth/`: Flujos de autenticación (Login y Registro).
+    * `store/`: Vistas de cara al cliente (Catálogo general `home`, Carrito `cart`, `product-detail`).
+    * `admin/`: Dashboard y herramientas de administración (`adminHome`, gestión de categorías, productos y listado de pedidos).
+    * `client/`: Historial de pedidos personal del usuario (`orders`).
+  * `types/`: Definiciones de interfaces TypeScript (`Product.ts`, `Category.ts`, `IPedido.ts`, `IUser.ts`).
+  * `utils/`: Módulos de soporte reutilizables (`auth.ts`, `cart.ts`, `localStorage.ts`, `navigate.ts`).
+* `public/`: Assets estáticos globales servidos por la raíz (datos de JSON locales en `/data` e imágenes de productos en `/images`).
+* `index.html`: Punto de entrada que redirige automáticamente al flujo de Login.
+* `vite.config.ts`: Configuración del servidor de desarrollo y del empaquetado multi-página.

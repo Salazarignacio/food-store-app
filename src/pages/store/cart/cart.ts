@@ -13,7 +13,7 @@ import {
   getUser,
   getUsersLocalStorage,
 } from "../../../utils/localStorage";
-import { logout } from "../../../utils/auth";
+import { logout, checkoutUser } from "../../../utils/auth";
 import type { IPedido, IDetallePedido } from "../../../types/IPedido";
 import { navigate } from "../../../utils/navigate";
 import { IUser } from "../../../types/IUser";
@@ -23,6 +23,8 @@ if (!user?.loggedIn) {
   alert("Debes iniciar sesión para acceder a la tienda.");
   navigate("../../auth/login/login.html");
 }
+
+checkoutUser();
 
 // Agregar caja flotante de información de usuario
 const userDiv = document.createElement("div");
