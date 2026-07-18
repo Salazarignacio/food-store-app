@@ -17,8 +17,11 @@
           alt="Logo"
         />
         <h1>Bienvenido a Food Store</h1>
-        <a href="/src/pages/client/orders/orders.html" class="btn-mis-pedidos">Mis Pedidos</a>
-        <a
+        <div class="navs">
+
+          <a href="/src/pages/admin/adminHome/adminHome.html" class="btn-mis-pedidos">Panel Admin</a>
+          <a href="/src/pages/client/orders/orders.html" class="btn-mis-pedidos">Mis Pedidos</a>
+          <a
           href="/src/pages/store/cart/cart.html"
           class="cart-nav"
           id="cantidad-productos"
@@ -27,6 +30,7 @@
             src="/images/cart.png"
             alt="Carrito"
         /></a>
+        </div> 
       </div>
       <div id="seccion-productos" class="productos-container"></div>
       <script type="module" src="./home.js"></script>

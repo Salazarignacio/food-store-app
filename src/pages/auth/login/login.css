@@ -1,99 +1,163 @@
-/* Reset básico (podés omitir si ya lo compartís globalmente) */
+/* CSS Styles for the SuperFood Login Page */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-/* Fondo general igual al resto */
 body {
-  background: radial-gradient(circle at 20% 30%, #ffffff, #e6e6e6);
+  /* Warm gradient background from orange to red matching screenshot */
+  background: linear-gradient(135deg, #f97316, #ef4444);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+  padding: 20px;
 }
 
-/* Contenedor del login */
+/* Centered Form Card */
 #form {
   background: #ffffff;
-  padding: 30px;
+  padding: 40px 30px;
   border-radius: 12px;
-  width: 320px;
-
+  width: 100%;
+  max-width: 360px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  gap: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* Título */
-h1 {
+/* Logo Title "SuperFood" */
+.logo-text {
   text-align: center;
-  margin-bottom: 15px;
-  color: #020617;
+  color: #ef5a3c; /* Red-orange branding color */
+  font-size: 2rem;
+  font-weight: 800;
+  margin: 0;
+  letter-spacing: -0.5px;
 }
 
-/* Agrupación label + input */
-#form div {
+/* "Iniciar Sesión" Subtitle */
+.form-title {
+  text-align: center;
+  color: #1f2937;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+/* Form Groups */
+.input-group {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
 }
 
-/* Labels */
-label {
+.input-group label {
   font-size: 0.85rem;
-  color: #475569;
+  font-weight: 700;
+  color: #374151;
 }
 
-/* Inputs y select */
-input,
-select {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+.input-group input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #cbd5e1;
+  font-size: 0.95rem;
+  color: #1f2937;
   outline: none;
-  font-size: 0.9rem;
-  transition: border 0.2s ease, box-shadow 0.2s ease;
+  background-color: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Focus estilo moderno */
-input:focus,
-select:focus {
-  border-color: #f03737;
-  box-shadow: 0 0 0 2px rgba(240, 55, 55, 0.2);
+.input-group input:focus {
+  border-color: #ef5a3c;
+  box-shadow: 0 0 0 3px rgba(239, 90, 60, 0.15);
 }
 
-/* Botón */
-.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-button {
-  margin-top: 10px;
-  padding: 10px;
-
-  background-image: linear-gradient(rgb(247, 111, 93), rgb(247, 91, 91));
-  border: solid 1px #f03737;
-  color: #fff;
-
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
-
-  transition: all 0.2s ease;
-}
-
-/* Hover botón */
-button:hover {
-  background-image: linear-gradient(rgb(247, 91, 91), rgb(247, 111, 93));
-  transform: translateY(-1px);
-}
-
-/* Placeholder más suave */
-input::placeholder {
+.input-group input::placeholder {
   color: #94a3b8;
+}
+
+/* Aligned Left Action Button (Ingresar / Registrarse) */
+#ingresar-btn,
+#registro-btn {
+  align-self: flex-start; /* Left-aligned like screenshot */
+  padding: 10px 24px;
+  background-color: #ef5a3c;
+  border: none;
+  color: #ffffff;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease, opacity 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+#ingresar-btn:hover:not([disabled]),
+#registro-btn:hover:not([disabled]) {
+  background-color: #d8482a;
+}
+
+#ingresar-btn:active:not([disabled]),
+#registro-btn:active:not([disabled]) {
+  transform: scale(0.98);
+}
+
+/* Disabled State for Button */
+#ingresar-btn.disabled,
+#ingresar-btn[disabled],
+#registro-btn.disabled,
+#registro-btn[disabled] {
+  background-color: #cbd5e1;
+  color: #94a3b8;
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+/* Register link */
+.register-text {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #4b5563;
+  margin-top: 8px;
+}
+
+.register-text a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.register-text a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* Test Accounts Section */
+.test-accounts {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border-top: 1px solid #f3f4f6;
+  padding-top: 16px;
+}
+
+.test-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 2px;
+}
+
+.test-item {
+  font-size: 0.8rem;
+  color: #6b7280;
 }

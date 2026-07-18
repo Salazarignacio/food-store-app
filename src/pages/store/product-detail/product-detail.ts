@@ -36,29 +36,37 @@ if (producto && productoDiv) {
   const cantidadEnCarrito =
     JSON.parse((getProduct() as string) || "[]").length || 0;
   cantidadProductos.innerHTML += `<p class="imagen-cart cantidad-productos">${cantidadEnCarrito}</p>`;
+  const isAgotado = !producto.disponible || producto.stock <= 0;
+  
   productoDiv.innerHTML = `
-  <div class="producto-detail">
-  <img src="${producto.imagen}" />
-  <div class="contenedor">
-  <h2>${producto.nombre}</h2>
-  <p>${producto.descripcion}</p>
-  <p>Stock: ${producto.stock}</p>
-  <p>${producto.disponible ? "Disponible" : "No disponible"}</p>
-  
-  <p class="precio">$${producto.precio.toLocaleString()}</p>
-  <div class="agregar-carrito">
-  <p>Unidades disponibles: ${producto.stock}</p>
-  <div class="contenedor-agregar">
-  
-  <input type="number" min="1" max="${producto.stock}" value="1" id="cantidad-${producto.id}" class="input-cantidad">
-  <button class="btn-agregar" data-id="${producto.id}">Agregar</button>
-  </div>
-  </div>
-  
-  
-  
-  </div>
-    `;
+    <div class="producto-detail">
+      <div class="producto-detail-img-container">
+        <img src="${producto.imagen}" alt="${producto.nombre}" />
+      </div>
+      <div class="producto-detail-info">
+        <span class="estado-badge ${producto.disponible && producto.stock > 0 ? 'disponible' : 'no-disponible'}">
+          ${producto.disponible && producto.stock > 0 ? "Disponible" : "Agotado"}
+        </span>
+        <h2>${producto.nombre}</h2>
+        <p class="descripcion-detail">${producto.descripcion}</p>
+        <p class="precio">$${producto.precio.toLocaleString()}</p>
+        
+        <div class="agregar-carrito">
+          ${
+            isAgotado
+              ? `<p class="stock-info agotado"><i class="fa-solid fa-circle-xmark"></i> Sin stock disponible</p>`
+              : `<p class="stock-info"><i class="fa-solid fa-box-archive"></i> Unidades disponibles: <span>${producto.stock}</span></p>`
+          }
+          <div class="contenedor-agregar">
+            <input type="number" min="1" max="${producto.stock}" value="1" id="cantidad-${producto.id}" class="input-cantidad" ${isAgotado ? 'disabled' : ''}>
+            <button class="btn-agregar" data-id="${producto.id}" ${isAgotado ? 'disabled' : ''}>
+              ${isAgotado ? 'Agotado' : 'Agregar al Carrito'}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
 
   productoDiv.appendChild(userDiv);
 

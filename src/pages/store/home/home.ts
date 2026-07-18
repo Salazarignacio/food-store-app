@@ -94,24 +94,26 @@ function render(prods: IProducto[]): void {
       div.classList.add("producto");
 
       div.innerHTML = `
-      <div class="contenedor-agregar">
-      <a class="detail-nav" href="../../store/product-detail/product-detail.html?id=${producto.id}">
-      <img src="${producto.imagen}" alt="${producto.nombre}"></a>
-      </div>
-      
-      <h3>${producto.nombre}</h3>
-      <p class="descripcion">${producto.descripcion}</p>
-      
-      <p class="precio">$${producto.precio.toLocaleString()}</p>
-      <div class="agregar-carrito">
-      
-      <input type="number" min="1" max="${producto.stock}" value="1" id="cantidad-${producto.id}" class="input-cantidad">
-      <button class="btn-agregar" data-id="${producto.id}">Agregar</button>
-      
-      </div>
-      <p class="disponible">${producto.disponible ? "Disponible" : "No disponible"}</p>
-
-    `;
+        <div class="producto-img-container">
+          <a class="detail-nav" href="../../store/product-detail/product-detail.html?id=${producto.id}">
+            <img src="${producto.imagen}" alt="${producto.nombre}">
+          </a>
+        </div>
+        <div class="producto-info-container">
+          <h3>${producto.nombre}</h3>
+          <p class="descripcion">${producto.descripcion}</p>
+          <div class="producto-meta">
+            <p class="precio">$${producto.precio.toLocaleString()}</p>
+            <span class="estado-badge ${producto.disponible ? 'disponible' : 'no-disponible'}">
+              ${producto.disponible ? "Disponible" : "Agotado"}
+            </span>
+          </div>
+          <div class="agregar-carrito">
+            <input type="number" min="1" max="${producto.stock}" value="1" id="cantidad-${producto.id}" class="input-cantidad">
+            <button class="btn-agregar" data-id="${producto.id}">Agregar</button>
+          </div>
+        </div>
+      `;
       productosDiv3.appendChild(div);
     });
     productosDiv.appendChild(productosDiv3);

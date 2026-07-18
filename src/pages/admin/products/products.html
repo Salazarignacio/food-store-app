@@ -15,11 +15,9 @@
         <ul>
           <li><a href="../../store/home/home.html">Tienda</a></li>
           <li><a href="../adminHome/adminHome.html">Panel Admin</a></li>
-          <li><a href="#">Ignacio</a></li>
+          <li><a href="#" id="mail-user"></a></li>
           <li>
-            <button>
-              <a href="../../store/home/home.html">Cerrar Sesión</a>
-            </button>
+            <button id="btn-logout">Cerrar Sesión</button>
           </li>
         </ul>
       </div>
@@ -30,7 +28,9 @@
           <ul>
             <li><a href="../adminHome/adminHome.html">Dashboard</a></li>
             <li><a href="../categories/categories.html">Categorias</a></li>
-            <li><a class="activo" href="../products/products.html">Productos</a></li>
+            <li>
+              <a class="activo" href="../products/products.html">Productos</a>
+            </li>
             <li><a href="../orders/pedidos.html">Pedidos</a></li>
           </ul>
         </div>
@@ -63,7 +63,7 @@
       <a href="../../store/home/home.html">Ir a la tienda</a>
       <button id="logoutButton">Logout</button>
     </div>
-
+    <script type="module" src="../adminHome/adminHome.ts"></script>
     <script type="module" src="./productos.ts"></script>
   </body>
 </html>

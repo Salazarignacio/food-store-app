@@ -9,35 +9,46 @@
 
   <body>
     <form id="form">
-      <h1>SuperFood</h1>
-      <h2>Registro</h2>
-      <div>
+      <h1 class="logo-text">SuperFood</h1>
+      <h2 class="form-title">Registro</h2>
+      <div class="input-group">
+        <label for="email">Nombre</label>
+        <input
+          type="name"
+          id="name"
+          name="name"
+          autocomplete="off"
+          placeholder="Ingresa tu nombre completo"
+        />
+      </div>
+      <div class="input-group">
         <label for="email">Email</label>
         <input
           type="email"
           id="email"
           name="email"
           autocomplete="off"
-          placeholder="example@example.com"
+          placeholder="ejemplo@correo.com"
         />
       </div>
-      <div>
-        <label for="password">password</label>
+      <div class="input-group">
+        <label for="password">Contraseña</label>
         <input
           type="password"
           id="password"
           name="password"
           autocomplete="off"
-          placeholder="********"
+          placeholder="Ingresa tu contraseña"
         />
       </div>
-      <div>
-        <label for="rol">Rol</label>
-      </div>
-      <button type="submit" class="disabled">Registrarse</button>
-      <a href="../login/login.html">¿Ya tienes cuenta? Inicia sesión aquí</a>
+      
+      <button type="submit" id="registro-btn" class="disabled" disabled>Registrarse</button>
+      
+      <p class="register-text">
+        ¿Ya tienes cuenta? <a href="../login/login.html">Inicia sesión</a>
+      </p>
     </form>
 
-    <script type="module" src="./registro.js"></script>
+    <script type="module" src="./registro.ts"></script>
   </body>
 </html>

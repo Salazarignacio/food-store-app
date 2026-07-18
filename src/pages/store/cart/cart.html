@@ -10,16 +10,25 @@
   <body>
     <!-- Encabezado / Logo -->
     <header class="contenedor1">
-      <a href="/src/pages/store/home/home.html">
-        <img src="/images/b6e11136-17fe-4a3e-9aca-699f1e8683d5.png" alt="Logo" class="logo-img" />
-      </a>
-      <h1>Food Store - Mi Carrito</h1>
-      <a href="/src/pages/client/orders/orders.html" class="btn-mis-pedidos">Mis Pedidos</a>
-    </header>
+      <div class="navs">
+
+          <a href="/src/pages/admin/adminHome/adminHome.html" class="btn-mis-pedidos">Panel Admin</a>
+          <a href="/src/pages/client/orders/orders.html" class="btn-mis-pedidos">Mis Pedidos</a>
+          <a
+          href="/src/pages/store/cart/cart.html"
+          class="cart-nav"
+          id="cantidad-productos"
+          ><img
+            class="imagen-cart"
+            src="/images/cart.png"
+            alt="Carrito"
+        /></a>
+        </div> 
+      </div></header>
 
     <!-- Contenido principal del Carrito -->
     <main class="contenedor-carrito-custom">
-      <h2 class="titulo-carrito">Mi Carrito</h2>
+      <!-- <h2 class="titulo-carrito">Mi Carrito</h2> -->
       
       <div class="main-carrito-layout">
         <!-- Listado de Productos -->
